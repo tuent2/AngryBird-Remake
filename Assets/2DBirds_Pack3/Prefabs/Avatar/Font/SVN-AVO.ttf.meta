@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: c7856438157f9094284dcd3f9573717c
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - SVN-Avo
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 13d208b1689e71645b46a658bba48c5a, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

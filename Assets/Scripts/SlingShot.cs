@@ -32,29 +32,29 @@ public class SlingShot : MonoBehaviour
     void CreateBird(){
         bird = Instantiate(birdFrefabs).GetComponent<Rigidbody2D>();
         birdCollider = bird.GetComponent<Collider2D>();
-        birdCollider.enabled = false;
+        // birdCollider.enabled = false;
         bird.isKinematic = true;
         ResetTrips();
     }
     // Update is called once per frame
     void Update()
     {
-        if(isMouseDown)
-        {
-            Vector3 mousePosition = Input.mousePosition;
-            mousePosition.z = 10;
+        // if(isMouseDown)
+        // {
+        //     Vector3 mousePosition = Input.mousePosition;
+        //     mousePosition.z = 10;
 
-            currentPossition = Camera.main.ScreenToWorldPoint(mousePosition);
-            currentPossition = center.position+Vector3.ClampMagnitude(currentPossition-center.position,maxLength);
-            currentPossition = ClampBoundary(currentPossition);
-            SetTrips(currentPossition);
-            if(birdCollider){
-                birdCollider.enabled = true;
-            }
-        }else
-        {
-            ResetTrips();
-        }
+        //     currentPossition = Camera.main.ScreenToWorldPoint(mousePosition);
+        //     currentPossition = center.position+Vector3.ClampMagnitude(currentPossition-center.position,maxLength);
+        //     currentPossition = ClampBoundary(currentPossition);
+        //     SetTrips(currentPossition);
+        //     if(birdCollider){
+        //         birdCollider.enabled = true;
+        //     }
+        // }else
+        // {
+        //     ResetTrips();
+        // }
     }
 
     private void OnMouseDown() {
@@ -63,7 +63,7 @@ public class SlingShot : MonoBehaviour
 
     private void OnMouseUp() {
         isMouseDown = false;
-        Shot();
+        // Shot();
         currentPossition = idlePosition.position;
     }
 
@@ -72,12 +72,12 @@ public class SlingShot : MonoBehaviour
         SetTrips(currentPossition);
     }
 
-    void SetTrips(Vector3 position){
-        lineRenderers[0].SetPosition(1,position);
-        lineRenderers[1].SetPosition(1,position);
+    void SetTrips(Vector3 position1){
+        lineRenderers[0].SetPosition(1,position1);
+        lineRenderers[1].SetPosition(1,position1);
 
-        Vector3 dir = position - center.position;
-        bird.transform.position =position+dir.normalized*birdPositionOffset;
+        Vector3 dir = position1 - center.position;
+        bird.transform.position =position1 + dir.normalized * birdPositionOffset;
         bird.transform.right= -dir.normalized; 
     }
 
@@ -86,13 +86,13 @@ public class SlingShot : MonoBehaviour
         return vector;
     }
 
-    void Shot(){
-        bird.isKinematic = false;
-        Vector3 birdForce = (currentPossition - center.position) * force * -1;
-        bird.velocity = birdForce;
+    // void Shot(){
+    //     bird.isKinematic = false;
+    //     Vector3 birdForce = (currentPossition - center.position) * force * -1;
+    //     bird.velocity = birdForce;
 
-        bird = null;
-        birdCollider = null;
-        Invoke("CreateBird",2);
-    }
+    //     bird = null;
+    //     birdCollider = null;
+    //     Invoke("CreateBird",2);
+    // }
 }
